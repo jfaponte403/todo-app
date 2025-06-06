@@ -5,9 +5,10 @@ import { Todo } from './Todo.tsx';
 interface Props {
   todos: ListOfTodos;
   onRemoveTodo: (id: TodoId) => void;
+  onCompleted: (todo: { id: TodoId; completed: boolean }) => void;
 }
 
-export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
+export const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onCompleted }) => {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
@@ -18,6 +19,7 @@ export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
             id={todo.id}
             title={todo.title}
             completed={todo.completed}
+            onCompleted={onCompleted}
           />
         </li>
       ))}
