@@ -10,14 +10,24 @@ interface FooterProps {
   handleFilterChange: (filter: FiltersValue) => void;
 }
 
-export const Footer = ({ completedCount, activeCount, onClearCompleted, handleFilterChange }: FooterProps) => {
+export const Footer = ({
+  filterSelected,
+  activeCount,
+  handleFilterChange,
+  onClearCompleted,
+  completedCount,
+}: FooterProps) => {
   return (
     <footer className="footer">
-      <span>
-        <strong>{activeCount.length}</strong>
+      <span className="view">
+        <strong> {activeCount} </strong>
       </span>
-
-      <Filters filterSelected={} onFilterChange={() => {}} />
+      <Filters filterSelected={filterSelected} onFilterChange={handleFilterChange} />
+      {completedCount > 0 && (
+        <button className="clear-completed" onClick={onClearCompleted}>
+          Delete all
+        </button>
+      )}
     </footer>
   );
 };

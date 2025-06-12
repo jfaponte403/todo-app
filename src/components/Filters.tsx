@@ -13,8 +13,6 @@ export function Filters({ filterSelected, onFilterChange }: Props) {
         const isSelected = key === filterSelected;
         const className = isSelected ? 'selected' : '';
 
-        const handleClick = (filter: FiltersValue) => {};
-
         return (
           <li key={key}>
             <a
